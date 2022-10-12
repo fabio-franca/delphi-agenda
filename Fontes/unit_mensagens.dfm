@@ -788,33 +788,34 @@ object form_mensagens: Tform_mensagens
     end
     object lb_titulo: TLabel
       Left = 136
-      Top = 56
-      Width = 46
+      Top = 52
+      Width = 48
       Height = 19
       Caption = 'T'#205'TULO'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowFrame
       Font.Height = -14
       Font.Name = 'Segoe UI'
-      Font.Style = []
+      Font.Style = [fsBold]
       ParentFont = False
     end
     object lb_mensagem: TLabel
       Left = 136
-      Top = 77
-      Width = 117
-      Height = 15
+      Top = 81
+      Width = 305
+      Height = 72
+      AutoSize = False
       Caption = 'Mensagem ao usu'#225'rio'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowFrame
       Font.Height = -12
       Font.Name = 'Segoe UI'
-      Font.Style = []
+      Font.Style = [fsItalic]
       ParentFont = False
       WordWrap = True
     end
     object pnl_sim: TPanel
-      Left = 282
+      Left = 362
       Top = 158
       Width = 87
       Height = 30
@@ -844,8 +845,8 @@ object form_mensagens: Tform_mensagens
       end
     end
     object pnl_nao: TPanel
-      Left = 369
-      Top = 158
+      Left = 272
+      Top = 159
       Width = 86
       Height = 30
       Color = clAppWorkSpace

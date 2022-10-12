@@ -2,6 +2,7 @@ unit unit_funcoes;
 
 interface
   function fn_criar_mensagem(TituloJanela, TituloMSG, MSG, Icone, Tipo : String): Boolean;
+  function Criptografia(Senha, Chave: string): string;
 
 implementation
 
@@ -20,6 +21,26 @@ begin
 
   form_mensagens.ShowModal;
   Result := form_mensagens.bRespostaMSG;
+end;
+
+function Criptografia(Senha, Chave: string): string;
+var
+  x,y : Integer;
+  NovaSenha : string;
+begin
+  for x := 1 to Length(Chave) do
+  begin
+    NovaSenha := '';
+
+    for y := 1 to Length(Senha) do
+    begin
+      NovaSenha := NovaSenha + chr( ( Ord(Chave[x] ) xor Ord ( Senha[y] ) ) );
+    end;
+
+    Senha := NovaSenha;
+  end;
+
+  result := Senha;
 end;
 
 end.

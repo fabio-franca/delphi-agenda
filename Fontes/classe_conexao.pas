@@ -33,7 +33,7 @@ type
 implementation
 
 uses
-  FireDAC.Stan.Intf;
+  FireDAC.Stan.Intf, unit_funcoes;
 
 { TConexao }
 
@@ -85,7 +85,7 @@ begin
     ini.WriteString('Configuracao', 'Base', FBase);
     ini.WriteString('Configuracao', 'Porta', FPorta);
     ini.WriteString('Acesso', 'Login', FLogin);
-    ini.WriteString('Acesso', 'Senha', FSenha);
+    ini.WriteString('Acesso', 'Senha', Criptografia(FSenha, '1devsecnpi'));
   finally
     Ini.Free;
   end;
