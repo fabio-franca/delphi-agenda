@@ -1,0 +1,32 @@
+unit unit_dados;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
+  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.VCLUI.Wait,
+  FireDAC.Phys.MySQLDef, FireDAC.Phys.MySQL, Data.DB, FireDAC.Comp.Client,
+  FireDAC.Comp.UI;
+
+type
+  Tform_Dados = class(TDataModule)
+    FDConnection1: TFDConnection;
+    FDPhysMySQLDriverLink: TFDPhysMySQLDriverLink;
+    FDGUIxWaitCursor: TFDGUIxWaitCursor;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  form_Dados: Tform_Dados;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+end.

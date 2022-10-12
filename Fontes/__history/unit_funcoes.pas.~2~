@@ -1,0 +1,15 @@
+unit unit_funcoes;
+
+interface
+  function fn_criar_mensagem(TituloJanela, TituloMSG, MSG, Icone : String): Boolean;
+
+implementation
+
+function fn_criar_mensagem(TituloJanela, TituloMSG, MSG, Icone : String): Boolean;
+begin
+  Result := False;
+
+
+end;
+
+end.

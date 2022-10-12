@@ -1,0 +1,29 @@
+object form_Dados: Tform_Dados
+  OldCreateOrder = False
+  OnCreate = DataModuleCreate
+  OnDestroy = DataModuleDestroy
+  Height = 235
+  Width = 607
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      'Database=agenda'
+      'User_Name=root'
+      'Password=root'
+      'Server=localhost'
+      'DriverID=MySQL')
+    Left = 40
+    Top = 16
+  end
+  object FDPhysMySQLDriverLink: TFDPhysMySQLDriverLink
+    VendorLib = 
+      'C:\Users\fabio\Documents\Embarcadero\Studio\Projects\Agenda\Outp' +
+      'ut\libmysql.dll'
+    Left = 168
+    Top = 16
+  end
+  object FDGUIxWaitCursor: TFDGUIxWaitCursor
+    Provider = 'Forms'
+    Left = 288
+    Top = 16
+  end
+end
