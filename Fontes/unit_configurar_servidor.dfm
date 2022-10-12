@@ -12,6 +12,7 @@ object form_configurar_servidor: Tform_configurar_servidor
   Font.Style = []
   OldCreateOrder = False
   Position = poDesktopCenter
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object Shape1: TShape

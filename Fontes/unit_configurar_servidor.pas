@@ -47,6 +47,7 @@ type
     ed_porta_atual: TEdit;
     procedure btn_cancelarClick(Sender: TObject);
     procedure btn_confirmarClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
     function ValidarObrigatoriedade:Boolean;
@@ -73,16 +74,16 @@ begin
     form_dados.Conexao.Login    := ed_login.Text;
     form_dados.Conexao.Senha    := ed_senha.Text;
     form_dados.Conexao.Porta    := ed_porta.Text;
+    form_dados.Conexao.pcrGravarArquivoINI;
 
     if form_dados.Conexao.fn_conexao_banco then
     begin
-      form_dados.Conexao.pcrGravarArquivoINI;
       fn_criar_mensagem('CONEXÃO',
                         'Banco conectado com sucesso!',
-                        '',
+                        ' O sistema será reiniciado',
                         ExtractFilePath(Application.ExeName) + '\Arquivos\icone-confirmacao.png'
                         ,'OK');
-      Close;
+      Application.Terminate;
     end
     else
     begin
@@ -93,6 +94,18 @@ begin
                       ,'OK');
       Application.Terminate;
     end;
+  end;
+end;
+
+procedure Tform_configurar_servidor.FormShow(Sender: TObject);
+begin
+  if form_dados.Conexao.fnLerArquivoINI then
+  begin
+    ed_caminho_atual.Text    := form_dados.Conexao.Servidor;
+    ed_nome_banco_atual.Text := form_dados.Conexao.Base;
+    ed_login_atual.Text      := form_dados.Conexao.Login;
+    ed_senha_atual.Text      := form_dados.Conexao.Senha;
+    ed_porta_atual.Text      := form_dados.Conexao.Porta;
   end;
 end;
 

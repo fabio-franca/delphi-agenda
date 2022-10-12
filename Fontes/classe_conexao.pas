@@ -3,7 +3,7 @@ unit classe_conexao;
 interface
 
 uses
-  FireDAC.Comp.Client, System.SysUtils, System.IniFiles, Vcl.Forms;
+  FireDAC.Comp.Client, System.IniFiles, Vcl.Forms;
 
 type
   TConexao = class
@@ -22,6 +22,7 @@ type
 
       function fn_conexao_banco: Boolean;
       procedure pcrGravarArquivoINI;
+      function fnLerArquivoINI: Boolean;
       property Conexao   : TFDConnection Read FConexao Write FConexao;
       property Servidor  : String Read FServidor Write FServidor;
       property Base      : String Read FBase Write FBase;
@@ -33,7 +34,7 @@ type
 implementation
 
 uses
-  FireDAC.Stan.Intf, unit_funcoes;
+  FireDAC.Stan.Intf, unit_funcoes, System.SysUtils;
 
 { TConexao }
 
@@ -54,20 +55,28 @@ begin
 
   FConexao.Params.Clear;
 
-  FConexao.Params.Add('Server='+ FServidor);
-  FConexao.Params.Add('user_name='+ FLogin);
-  FConexao.Params.Add('password='+ FSenha);
-  FConexao.Params.Add('port='+ FPorta);
-  FConexao.Params.Add('Database='+ FBase);
-  FConexao.Params.Add('DriverID=' + 'MySQL');
+  if not fnLerArquivoINI then
+  begin
+    Result   := False;
+    FMsgErro := 'O Arquivo de Configuração não foi encontrado.';
+  end
+  else
+  begin
+    FConexao.Params.Add('Server='+ FServidor);
+    FConexao.Params.Add('user_name='+ FLogin);
+    FConexao.Params.Add('password='+ FSenha);
+    FConexao.Params.Add('port='+ FPorta);
+    FConexao.Params.Add('Database='+ FBase);
+    FConexao.Params.Add('DriverID=' + 'MySQL');
 
-  try
-    FConexao.Connected := True;
-  Except
-    on e:Exception do
-    begin
-      FMsgErro := e.Message;
-      Result   := False;
+    try
+      FConexao.Connected := True;
+    Except
+      on e:Exception do
+      begin
+        FMsgErro := e.Message;
+        Result   := False;
+      end;
     end;
   end;
 end;
@@ -89,6 +98,34 @@ begin
   finally
     Ini.Free;
   end;
+end;
+
+function TConexao.fnLerArquivoINI: Boolean;
+var
+  IniFile: String;
+  Ini    : TiniFile;
+begin
+
+  IniFile := ChangeFileExt(Application.Exename, '.ini'); //Seta o caminho do arquivo .ini
+  Ini     := TIniFile.Create(IniFile);                  //Cria o arquivo
+
+  if not fileexists (IniFile) then
+    Result := False
+  else
+  begin
+    try
+      FServidor := ini.ReadString('Configuracao', 'Servidor', ''); //Escreve uma string dentro do arquivo
+      FBase     := ini.ReadString('Configuracao', 'Base', '');
+      FPorta    := ini.ReadString('Configuracao', 'Porta', '');
+      FLogin    := ini.ReadString('Acesso', 'Login', '');
+      FSenha    := ini.ReadString('Acesso', 'Senha', '');
+      FSenha    := Criptografia(FSenha, '1devsecnpi');    //Ao rodar novamente a função criptografia, descriptografa a senha
+    finally
+      Result := True;
+      Ini.Free;
+    end;
+  end;
+
 end;
 
 end.
