@@ -16,27 +16,30 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(Tform_Dados, form_Dados);
-
+  Application.CreateForm(Tform_Principal, form_Principal);
   If form_dados.Conexao.fn_conexao_banco then
   begin
-  form_login := Tform_login.Create(nil);
-  form_login.ShowModal;
+      if (form_login = nil) then
+      begin
+        Application.CreateForm(Tform_login, form_login);
+      end;
+      form_Principal.Show;
+      form_Principal.Enabled := False;
+      form_login.ShowModal;
 
-  Application.CreateForm(Tform_Principal, form_Principal);
+    //form_login := Tform_login.Create(nil);
+    //form_login.ShowModal;
+    //form_login.Hide;    //Esconde o form de login
+    //form_login.Destroy;  //Free ainda guardava o form aberto. É melhor destruir.
+    //form_Principal.Focused;   //Focused exibe o form, ao invés de ter que clicar na barra de tarefas
 
-  form_login.Hide;    //Esconde o form de login
-  form_login.Destroy;  //Free ainda guardava o form aberto. É melhor destruir.
-
-  form_principal.Focused;   //Focused exibe o form, ao invés de ter que clicar na barra de tarefas
-
-  //Application.CreateForm(Tform_configurar_servidor, form_configurar_servidor);
-  Application.Run;
+    Application.Run;
   end
   else
   begin
     fn_criar_mensagem('CONEXÃO',
                     'ERRO AO CONECTAR',
-                    'Não foi possível conectar ao banco de dados.' + form_dados.Conexao.MsgErro,
+                    'Não foi possível conectar ao banco de dados. ' + form_dados.Conexao.MsgErro,
                     ExtractFilePath(Application.ExeName) + '\Arquivos\icone_atencao.png'
                     ,'OK');
 

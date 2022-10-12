@@ -1,9 +1,9 @@
 object form_login: Tform_login
   Left = 0
   Top = 0
-  BorderIcons = [biSystemMenu, biMinimize]
+  BorderIcons = []
   BorderStyle = bsNone
-  Caption = 'form_login'
+  Caption = 'Agenda Delphi v1.0.0'
   ClientHeight = 410
   ClientWidth = 578
   Color = clSkyBlue
@@ -12,9 +12,12 @@ object form_login: Tform_login
   Font.Height = -13
   Font.Name = 'Segoe UI'
   Font.Style = []
+  KeyPreview = True
   OldCreateOrder = False
-  Position = poDesktopCenter
+  Position = poScreenCenter
   OnActivate = FormActivate
+  OnClose = FormClose
+  OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 17
   object pnl_fundo: TPanel
@@ -49,13 +52,14 @@ object form_login: Tform_login
       ParentFont = False
     end
     object SpeedButton1: TSpeedButton
-      Left = 496
+      Left = 480
       Top = 4
-      Width = 29
+      Width = 45
       Height = 29
       Cursor = crHandPoint
       Anchors = [akTop, akRight]
       Caption = 'Sair'
+      Flat = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clGrayText
       Font.Height = -13
@@ -74,9 +78,6 @@ object form_login: Tform_login
       Color = 16250871
       ParentBackground = False
       TabOrder = 0
-      ExplicitLeft = 1
-      ExplicitTop = 1
-      ExplicitHeight = 359
       object Label1: TLabel
         Left = 40
         Top = 32
@@ -91,11 +92,11 @@ object form_login: Tform_login
         ParentFont = False
       end
       object Label2: TLabel
-        Left = 11
+        Left = 18
         Top = 119
-        Width = 160
+        Width = 147
         Height = 25
-        Caption = 'AGENDA PESSOAL'
+        Caption = 'AGENDA DELPHI'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clMenuHighlight
         Font.Height = -19

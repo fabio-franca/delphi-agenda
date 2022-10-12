@@ -28,6 +28,8 @@ type
     procedure SpeedButton1Click(Sender: TObject);
     procedure btn_confirmarClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormDestroy(Sender: TObject);
   private
     { Private declarations }
   public
@@ -41,6 +43,8 @@ implementation
 
 {$R *.dfm}
 
+uses unit_Principal;
+
 procedure Tform_login.btn_confirmarClick(Sender: TObject);
 begin
   Close;
@@ -50,6 +54,20 @@ procedure Tform_login.FormActivate(Sender: TObject);
 begin
   pnl_fundo.left := Round ((form_login.Width - pnl_fundo.Width)/2);
   pnl_fundo.Top  := Round ((form_login.Height - pnl_fundo.Height)/2);
+end;
+
+procedure Tform_login.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Action := caFree;
+
+  form_Principal.Enabled := True;
+
+  form_Principal.EsmaecerFormPrincipal('N');
+end;
+
+procedure Tform_login.FormDestroy(Sender: TObject);
+begin
+  form_login := nil;
 end;
 
 procedure Tform_login.SpeedButton1Click(Sender: TObject);

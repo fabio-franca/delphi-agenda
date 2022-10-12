@@ -80,8 +80,8 @@ begin
     begin
       fn_criar_mensagem('CONEXÃO',
                         'Banco conectado com sucesso!',
-                        ' O sistema será reiniciado',
-                        ExtractFilePath(Application.ExeName) + '\Arquivos\icone-confirmacao.png'
+                        ' O sistema será fechado.',
+                        ExtractFilePath(Application.ExeName) + '\Arquivos\icone-sucesso-2.png'
                         ,'OK');
       Application.Terminate;
     end
@@ -117,6 +117,7 @@ end;
 function Tform_configurar_servidor.ValidarObrigatoriedade:Boolean;
 begin
   Result := False;
+
   if (ed_caminho.Text = '') then
   begin
     Showmessage('Caminho do Banco é obrigatório.');
