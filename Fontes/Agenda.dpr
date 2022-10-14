@@ -8,7 +8,11 @@ uses
   unit_configurar_servidor in 'unit_configurar_servidor.pas' {form_configurar_servidor},
   unit_mensagens in 'unit_mensagens.pas' {form_mensagens},
   unit_funcoes in 'unit_funcoes.pas',
-  classe_conexao in 'classe_conexao.pas', System.SysUtils;
+  classe_conexao in 'classe_conexao.pas',
+  System.SysUtils,
+  unit_agendamento in 'unit_agendamento.pas' {form_agendamento},
+  unit_profissionais in 'unit_profissionais.pas' {form_profissionais},
+  classe_profissionais in 'classe_profissionais.pas';
 
 {$R *.res}
 
@@ -17,6 +21,7 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(Tform_Dados, form_Dados);
   Application.CreateForm(Tform_Principal, form_Principal);
+
   If form_dados.Conexao.fn_conexao_banco then
   begin
       if (form_login = nil) then

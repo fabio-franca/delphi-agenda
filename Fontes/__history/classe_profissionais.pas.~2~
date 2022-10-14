@@ -1,0 +1,19 @@
+unit classe_profissionais;
+
+interface
+
+uses
+  FireDAC.Comp.Client;
+
+Type
+  TProfissionais = class
+    private
+
+    public
+      constructor Create(Conexao : TFdConnection);
+      destructor Destroy: Override;
+  end;
+
+implementation
+
+end.

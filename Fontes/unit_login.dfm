@@ -3,9 +3,10 @@ object form_login: Tform_login
   Top = 0
   BorderIcons = []
   BorderStyle = bsNone
+  BorderWidth = 2
   Caption = 'Agenda Delphi v1.0.0'
-  ClientHeight = 410
-  ClientWidth = 578
+  ClientHeight = 406
+  ClientWidth = 574
   Color = clSkyBlue
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,12 +21,24 @@ object form_login: Tform_login
   OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 17
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 574
+    Height = 406
+    Align = alClient
+    BevelInner = bvRaised
+    BevelOuter = bvSpace
+    BevelWidth = 2
+    TabOrder = 1
+  end
   object pnl_fundo: TPanel
     Left = 23
     Top = 26
     Width = 529
     Height = 361
     BevelOuter = bvNone
+    BorderWidth = 1
     Color = clWhite
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBackground
@@ -69,15 +82,18 @@ object form_login: Tform_login
       OnClick = SpeedButton1Click
     end
     object pnl_lateral: TPanel
-      Left = 0
-      Top = 0
+      Left = 1
+      Top = 1
       Width = 185
-      Height = 361
+      Height = 359
       Align = alLeft
       BevelOuter = bvNone
       Color = 16250871
       ParentBackground = False
       TabOrder = 0
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitHeight = 361
       object Label1: TLabel
         Left = 40
         Top = 32

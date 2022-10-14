@@ -25,6 +25,7 @@ type
     pnl_confirmar: TPanel;
     btn_confirmar: TSpeedButton;
     SpeedButton1: TSpeedButton;
+    Panel1: TPanel;
     procedure SpeedButton1Click(Sender: TObject);
     procedure btn_confirmarClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);

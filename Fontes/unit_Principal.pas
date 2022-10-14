@@ -13,28 +13,32 @@ type
     Label2: TLabel;
     Panel1: TPanel;
     Panel2: TPanel;
-    Panel3: TPanel;
     Image1: TImage;
     Shape1: TShape;
     SpeedButton1: TSpeedButton;
     SpeedButton2: TSpeedButton;
     Shape2: TShape;
     Label3: TLabel;
-    Label4: TLabel;
-    Label5: TLabel;
-    Panel4: TPanel;
-    Label6: TLabel;
-    Panel5: TPanel;
     Panel6: TPanel;
     Image5: TImage;
     Shape3: TShape;
+    pnl_formulario: TPanel;
+    pnl_bloqueia: TPanel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Panel3: TPanel;
     btn_agendamento: TSpeedButton;
+    Panel4: TPanel;
     SpeedButton3: TSpeedButton;
+    Panel5: TPanel;
     SpeedButton4: TSpeedButton;
     procedure Button1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure Image5Click(Sender: TObject);
+    procedure btn_agendamentoClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -49,7 +53,15 @@ implementation
 
 {$R *.dfm}
 
-uses unit_funcoes;
+uses unit_funcoes, unit_configurar_servidor, unit_agendamento;
+
+procedure Tform_Principal.btn_agendamentoClick(Sender: TObject);
+begin
+    form_agendamento := Tform_agendamento.Create(Self);
+    form_agendamento.Parent := pnl_formulario;
+    form_agendamento.Show;
+    form_principal.pnl_bloqueia.Enabled := False;
+end;
 
 procedure Tform_Principal.Button1Click(Sender: TObject);
 begin
@@ -65,7 +77,7 @@ begin
   if(Liga = 'S') Then
   begin
     Self.AlphaBlend := True;
-    Self.AlphaBlendValue := 150;
+    Self.AlphaBlendValue := 50;
   end
   else
   begin
@@ -76,6 +88,16 @@ end;
 procedure Tform_Principal.FormCreate(Sender: TObject);
 begin
   EsmaecerFormPrincipal('S');
+end;
+
+procedure Tform_Principal.Image5Click(Sender: TObject);
+begin
+  try
+    form_configurar_servidor := Tform_configurar_servidor.Create(Self);
+    form_configurar_servidor.ShowModal;
+  finally
+    form_configurar_servidor.Destroy;
+  end;
 end;
 
 procedure Tform_Principal.SpeedButton1Click(Sender: TObject);
