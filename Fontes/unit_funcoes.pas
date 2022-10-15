@@ -1,12 +1,15 @@
 unit unit_funcoes;
 
 interface
+
+uses
+  FireDAC.Comp.Client;
   function fn_criar_mensagem(TituloJanela, TituloMSG, MSG, Icone, Tipo : String): Boolean;
   function Criptografia(Senha, Chave: string): string;
-
+  function fn_proximo_codigo (Tabela, Campo : String): Integer;
 implementation
 
-uses unit_mensagens;
+uses unit_mensagens, unit_dados;
 
 function fn_criar_mensagem(TituloJanela, TituloMSG, MSG, Icone, Tipo : String): Boolean;
 begin
@@ -41,6 +44,33 @@ begin
   end;
 
   result := Senha;
+end;
+
+function fn_proximo_codigo (Tabela, Campo : String): Integer;
+var
+  Query: TFDQuery;
+begin
+  Result := 1;
+
+  try
+    form_dados.FDConnection.Connected := False;
+    form_dados.FDConnection.Connected := True;
+
+    Query := TFDQuery.Create(nil);
+    Query.Connection := form_dados.FDConnection;
+
+    Query.Close;
+    Query.SQL.Clear;
+    Query.SQL.Add('SELEC MAX('+ Campo +') AS CODIGO FROM ' + Tabela);
+    Query.Open();
+
+    if Query.FieldByName('CODIGO').AsString <> '' then
+      Result := Query.FieldByName('CODIGO').AsInteger + 1;
+
+  finally
+    Query.Destroy;
+  end;
+
 end;
 
 end.

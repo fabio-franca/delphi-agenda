@@ -3,7 +3,7 @@ object form_profissionais: Tform_profissionais
   Top = 0
   BorderStyle = bsNone
   Caption = 'form_profissionais'
-  ClientHeight = 280
+  ClientHeight = 413
   ClientWidth = 585
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -12,13 +12,15 @@ object form_profissionais: Tform_profissionais
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poDesktopCenter
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
     Left = 0
     Top = 0
     Width = 585
-    Height = 280
+    Height = 413
     Align = alClient
     BevelOuter = bvNone
     Color = clWindow
@@ -30,7 +32,6 @@ object form_profissionais: Tform_profissionais
     ParentBackground = False
     ParentFont = False
     TabOrder = 0
-    ExplicitHeight = 377
     object Label1: TLabel
       Left = 27
       Top = 54
@@ -90,19 +91,6 @@ object form_profissionais: Tform_profissionais
       Height = 1
       Pen.Color = clGrayText
     end
-    object cb_profissional: TComboBox
-      Left = 23
-      Top = 178
-      Width = 313
-      Height = 23
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -12
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 0
-    end
     object ed_profissional: TEdit
       Left = 26
       Top = 75
@@ -114,7 +102,7 @@ object form_profissionais: Tform_profissionais
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
-      TabOrder = 1
+      TabOrder = 0
     end
     object mkCelular: TMaskEdit
       Left = 351
@@ -129,7 +117,7 @@ object form_profissionais: Tform_profissionais
       Font.Style = []
       MaxLength = 14
       ParentFont = False
-      TabOrder = 2
+      TabOrder = 1
       Text = '(   )    -    '
     end
     object ed_observacao: TEdit
@@ -143,16 +131,16 @@ object form_profissionais: Tform_profissionais
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
-      TabOrder = 3
+      TabOrder = 2
     end
     object Panel5: TPanel
       Left = 153
-      Top = 217
+      Top = 357
       Width = 108
       Height = 38
       Color = clHotLight
       ParentBackground = False
-      TabOrder = 4
+      TabOrder = 3
       object btn_confirmar: TSpeedButton
         Left = 1
         Top = 1
@@ -173,12 +161,12 @@ object form_profissionais: Tform_profissionais
     end
     object Panel6: TPanel
       Left = 304
-      Top = 217
+      Top = 357
       Width = 108
       Height = 38
       Color = clAppWorkSpace
       ParentBackground = False
-      TabOrder = 5
+      TabOrder = 4
       object btn_cancelar: TSpeedButton
         Left = 1
         Top = 1
@@ -194,8 +182,84 @@ object form_profissionais: Tform_profissionais
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
+        OnClick = btn_cancelarClick
         ExplicitTop = 0
       end
     end
+    object DBGrid1: TDBGrid
+      Left = 27
+      Top = 200
+      Width = 526
+      Height = 120
+      DataSource = ds_profissionais
+      Enabled = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = 11
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 5
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = 9
+      TitleFont.Name = 'Segoe UI'
+      TitleFont.Style = []
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'id_profissionais'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = 12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Title.Caption = 'C'#243'digo'
+          Title.Font.Charset = DEFAULT_CHARSET
+          Title.Font.Color = clWindowText
+          Title.Font.Height = 11
+          Title.Font.Name = 'Segoe UI'
+          Title.Font.Style = []
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'ds_profissional'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = 12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Title.Caption = 'Nome'
+          Title.Font.Charset = DEFAULT_CHARSET
+          Title.Font.Color = clWindowText
+          Title.Font.Height = 11
+          Title.Font.Name = 'Segoe UI'
+          Title.Font.Style = []
+          Width = 200
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'ds_especialidade'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = 12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Title.Caption = 'Especialidade'
+          Title.Font.Charset = DEFAULT_CHARSET
+          Title.Font.Color = clWindowText
+          Title.Font.Height = 11
+          Title.Font.Name = 'Segoe UI'
+          Title.Font.Style = []
+          Width = 241
+          Visible = True
+        end>
+    end
+  end
+  object ds_profissionais: TDataSource
+    Left = 544
+    Top = 368
   end
 end

@@ -7,7 +7,7 @@ uses
   FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.VCLUI.Wait,
   FireDAC.Phys.MySQLDef, FireDAC.Phys.MySQL, Data.DB, FireDAC.Comp.Client,
-  FireDAC.Comp.UI, classe_conexao;
+  FireDAC.Comp.UI, classe_conexao, classe_profissionais;
 
 type
   Tform_Dados = class(TDataModule)
@@ -21,6 +21,7 @@ type
   public
     { Public declarations }
     Conexao : TConexao;
+    Profissional : TProfissionais;
   end;
 
 var

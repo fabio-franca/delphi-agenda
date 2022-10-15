@@ -13,6 +13,8 @@ object form_agendamento: Tform_agendamento
   Font.Style = []
   OldCreateOrder = False
   OnClose = FormClose
+  OnCreate = FormCreate
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 11
   object Panel1: TPanel
@@ -256,19 +258,6 @@ object form_agendamento: Tform_agendamento
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
       OnClick = btn_cad_profClick
     end
-    object cb_profissional: TComboBox
-      Left = 24
-      Top = 43
-      Width = 313
-      Height = 23
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -12
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 0
-    end
     object mkDia: TMaskEdit
       Left = 26
       Top = 102
@@ -282,7 +271,7 @@ object form_agendamento: Tform_agendamento
       Font.Style = []
       MaxLength = 8
       ParentFont = False
-      TabOrder = 1
+      TabOrder = 0
       Text = ''
     end
     object MaskEdit1: TMaskEdit
@@ -298,7 +287,7 @@ object form_agendamento: Tform_agendamento
       Font.Style = []
       MaxLength = 5
       ParentFont = False
-      TabOrder = 2
+      TabOrder = 1
       Text = '  :  '
     end
     object ed_cliente: TEdit
@@ -312,7 +301,7 @@ object form_agendamento: Tform_agendamento
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
-      TabOrder = 3
+      TabOrder = 2
     end
     object mkTelefone: TMaskEdit
       Left = 26
@@ -327,7 +316,7 @@ object form_agendamento: Tform_agendamento
       Font.Style = []
       MaxLength = 14
       ParentFont = False
-      TabOrder = 4
+      TabOrder = 3
       Text = '(   )    -    '
     end
     object mkCelular: TMaskEdit
@@ -343,7 +332,7 @@ object form_agendamento: Tform_agendamento
       Font.Style = []
       MaxLength = 14
       ParentFont = False
-      TabOrder = 5
+      TabOrder = 4
       Text = '(   )    -    '
     end
     object ed_observacao: TEdit
@@ -357,7 +346,7 @@ object form_agendamento: Tform_agendamento
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
-      TabOrder = 6
+      TabOrder = 5
     end
     object Panel5: TPanel
       Left = 74
@@ -366,7 +355,7 @@ object form_agendamento: Tform_agendamento
       Height = 38
       Color = clHotLight
       ParentBackground = False
-      TabOrder = 7
+      TabOrder = 6
       object btn_confirmar: TSpeedButton
         Left = 1
         Top = 1
@@ -393,7 +382,7 @@ object form_agendamento: Tform_agendamento
       Height = 38
       Color = clAppWorkSpace
       ParentBackground = False
-      TabOrder = 8
+      TabOrder = 7
       object btn_cancelar: TSpeedButton
         Left = 1
         Top = 1
@@ -413,5 +402,26 @@ object form_agendamento: Tform_agendamento
         ExplicitTop = 0
       end
     end
+    object cb_profissional: TDBLookupComboBox
+      Left = 26
+      Top = 43
+      Width = 311
+      Height = 23
+      Hint = 'Selecione o Profissional'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = 16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      KeyField = 'id_profissionais'
+      ListField = 'ds_profissional'
+      ListSource = ds_profissionais
+      ParentFont = False
+      TabOrder = 8
+    end
+  end
+  object ds_profissionais: TDataSource
+    Left = 344
+    Top = 65528
   end
 end
