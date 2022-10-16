@@ -114,12 +114,15 @@ begin
          Query.ParamByName('p_id_profissionais').AsInteger := FId_Profissional;
        end;
 
-       Query.ParamByName('ds_profissional').AsString    :=  Fds_profissional;
-       Query.ParamByName('ds_especialidade').AsString   :=  Fds_especialidade;
-       Query.ParamByName('nr_contato').AsString         :=  Fnr_contato;
+       Query.ParamByName('p_ds_profissional').AsString    :=  Fds_profissional;
+       Query.ParamByName('p_ds_especialidade').AsString   :=  Fds_especialidade;
+       Query.ParamByName('p_nr_contato').AsString         :=  Fnr_contato;
        Query.ExecSQL;
 
+       fn_consulta('');
+
        Result := True;
+
      except
       on E: Exception do
       begin
@@ -144,6 +147,8 @@ begin
 
     FConexao.ExecSQL('DELETE FROM profissionais WHERE id_profissionais = :id_chave',
                       [id_chave]);
+
+    fn_consulta('');
   end;
 
 end;

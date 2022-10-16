@@ -61,7 +61,7 @@ begin
 
     Query.Close;
     Query.SQL.Clear;
-    Query.SQL.Add('SELEC MAX('+ Campo +') AS CODIGO FROM ' + Tabela);
+    Query.SQL.Add('SELECT MAX('+ Campo +') AS CODIGO FROM ' + Tabela);
     Query.Open();
 
     if Query.FieldByName('CODIGO').AsString <> '' then

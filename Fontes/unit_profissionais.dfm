@@ -35,9 +35,9 @@ object form_profissionais: Tform_profissionais
     object Label1: TLabel
       Left = 27
       Top = 54
-      Width = 61
+      Width = 69
       Height = 15
-      Caption = 'Profissional'
+      Caption = 'Profissional *'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clGrayText
       Font.Height = -12
@@ -61,9 +61,9 @@ object form_profissionais: Tform_profissionais
     object Label6: TLabel
       Left = 27
       Top = 111
-      Width = 71
+      Width = 79
       Height = 15
-      Caption = 'Especialidade'
+      Caption = 'Especialidade *'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clGrayText
       Font.Height = -12
@@ -120,7 +120,7 @@ object form_profissionais: Tform_profissionais
       TabOrder = 1
       Text = '(   )    -    '
     end
-    object ed_observacao: TEdit
+    object ed_especialidade: TEdit
       Left = 26
       Top = 132
       Width = 310
@@ -156,6 +156,7 @@ object form_profissionais: Tform_profissionais
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
+        OnClick = btn_confirmarClick
         ExplicitLeft = 0
       end
     end
@@ -192,32 +193,33 @@ object form_profissionais: Tform_profissionais
       Width = 526
       Height = 120
       DataSource = ds_profissionais
-      Enabled = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = 11
+      Font.Height = 12
       Font.Name = 'Segoe UI'
       Font.Style = []
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleHotTrack]
       ParentFont = False
       TabOrder = 5
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
-      TitleFont.Height = 9
+      TitleFont.Height = 12
       TitleFont.Name = 'Segoe UI'
       TitleFont.Style = []
+      OnKeyDown = DBGrid1KeyDown
       Columns = <
         item
           Expanded = False
           FieldName = 'id_profissionais'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = 12
+          Font.Height = 13
           Font.Name = 'Segoe UI'
           Font.Style = []
           Title.Caption = 'C'#243'digo'
           Title.Font.Charset = DEFAULT_CHARSET
           Title.Font.Color = clWindowText
-          Title.Font.Height = 11
+          Title.Font.Height = 12
           Title.Font.Name = 'Segoe UI'
           Title.Font.Style = []
           Visible = True
@@ -233,7 +235,7 @@ object form_profissionais: Tform_profissionais
           Title.Caption = 'Nome'
           Title.Font.Charset = DEFAULT_CHARSET
           Title.Font.Color = clWindowText
-          Title.Font.Height = 11
+          Title.Font.Height = 12
           Title.Font.Name = 'Segoe UI'
           Title.Font.Style = []
           Width = 200
@@ -250,7 +252,7 @@ object form_profissionais: Tform_profissionais
           Title.Caption = 'Especialidade'
           Title.Font.Charset = DEFAULT_CHARSET
           Title.Font.Color = clWindowText
-          Title.Font.Height = 11
+          Title.Font.Height = 12
           Title.Font.Name = 'Segoe UI'
           Title.Font.Style = []
           Width = 241
